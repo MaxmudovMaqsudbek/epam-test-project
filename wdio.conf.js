@@ -105,7 +105,7 @@ export const config = {
     connectionRetryTimeout: 120000,
     //
     // Default request retries count
-    connectionRetryCount: 3,
+    connectionRetryCount: 1,
     //
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance
@@ -126,7 +126,7 @@ export const config = {
     specFileRetries: 2,
     //
     // Delay in seconds between the spec file retry attempts
-    specFileRetriesDelay: 3,
+    specFileRetriesDelay: 1,
     //
     // Whether or not retried spec files should be retried immediately or deferred to the end of the queue
     specFileRetriesDeferred: false,
