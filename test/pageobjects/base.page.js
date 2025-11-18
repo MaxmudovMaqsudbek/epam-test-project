@@ -4,6 +4,7 @@ class BasePage{
     }
 
     async click(element){
+        await element.waitForDisplayed();
         await element.waitForClickable();
         await element.click();
     }
