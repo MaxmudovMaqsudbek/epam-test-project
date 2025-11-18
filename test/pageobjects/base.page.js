@@ -6,13 +6,11 @@ class BasePage{
     async click(element){
         await element.waitForDisplayed();
         await element.waitForClickable();
-        await element.scrollIntoView();
         await element.click();
     }
 
     async type(element, value){
         await element.waitForDisplayed();
-        await element.scrollIntoView();
         await element.setValue(value);
     }
 
