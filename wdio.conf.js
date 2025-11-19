@@ -43,16 +43,37 @@ export const config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 2,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [
-    {
-        browserName: 'chrome'
-    }, 
+     {
+            browserName: 'chrome',
+            maxInstances: 2,
+            'goog:chromeOptions': {
+                args: [
+                    '--headless=new',
+                    '--window-size=1920,1080',
+                    '--no-sandbox',
+                    '--disable-dev-shm-usage',
+                    '--disable-extensions',
+                    '--disable-gpu',
+                    '--disable-infobars',
+                    '--disable-popup-blocking',
+                    '--disable-animations',
+                    '--disable-background-timer-throttling',
+                    '--disable-renderer-backgrounding',
+                    '--disable-backgrounding-occluded-windows',
+                    '--force-color-profile=srgb',
+                    '--disable-blink-features=AutomationControlled',
+                    '--start-maximized',
+                    '--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0 Safari/537.36 Edg/115.0.1901.188'
+                ]
+            }
+        },
    /* {
         browserName: 'firefox'
     }, 
@@ -105,7 +126,7 @@ export const config = {
     connectionRetryTimeout: 120000,
     //
     // Default request retries count
-    connectionRetryCount: 1,
+    connectionRetryCount: 3,
     //
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance
@@ -126,7 +147,7 @@ export const config = {
     specFileRetries: 2,
     //
     // Delay in seconds between the spec file retry attempts
-    specFileRetriesDelay: 1,
+    specFileRetriesDelay: 3,
     //
     // Whether or not retried spec files should be retried immediately or deferred to the end of the queue
     specFileRetriesDeferred: false,

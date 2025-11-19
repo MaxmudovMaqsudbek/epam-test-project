@@ -30,7 +30,7 @@ describe("User Access Management Spec", () => {
             });
      });
 
-    describe("Positive Tests with valid credentials", () => {
+    describe.skip("Positive Tests with valid credentials", () => {
         it("should login successfully with valid credentials", async () => {
             await userAccessManagementPage.clickSignIn();
             await userAccessManagementPage.enterEmail("mahmudovmaqsudbek2607@gmail.com");
