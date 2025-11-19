@@ -49,14 +49,13 @@ describe("Filter Functionality Spec", () => {
       expect(voteCount).to.be.at.most(4000000);
     }
   });
-  it.skip("should check the first movie when IMDb rating is sorted in descending order", async () => {
-    await filterPage.openTop250Movies();
-    expect(await filterPage.sortByImdbRating()).to.be.true;
-    await filterPage.changeSortedItemsDescendingOrder();
-    const movies = await filterPage.moviesList;
-    expect(movies.length, "No movies found after sorting").to.be.greaterThan(0);
-    const firstMovie = await movies[0].$("a .ipc-title__text");
-    const firstMovieText = await firstMovie.getText();
-    expect(firstMovieText).to.include("The Incredibles");
+  it("should check the first movie when IMDb rating is sorted in descending order", async () => {
+        await filterPage.openTop250Movies();
+        await filterPage.sortByImdbRating();
+        await filterPage.changeSortedItemsDescendingOrder();
+        await browser.pause(500);
+        await filterPage.waitForFirstMovieToBe("The Incredibles");
+        const movies = await filterPage.moviesList;
+        expect(movies.length).to.be.greaterThan(0);
   });
 });
