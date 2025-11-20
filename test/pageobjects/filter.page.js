@@ -1,5 +1,6 @@
+import { parseVoteCount } from "../utils/parse.utils";
 import BasePage from "./base.page";
-
+import { expect } from "chai";
 class FilterPage extends BasePage {
 
     get allMenuButton() { return $("div.sc-8798a0ad-0") }
@@ -79,6 +80,30 @@ class FilterPage extends BasePage {
                 return text.includes(title);
             }
         );
+    }
+
+    async validateRatingRange(min, max) {
+        const movies = await this.moviesList;
+
+        for (let i = 0; i < movies.length; i++) {
+            const ratingElement = await this.getMovieRating(i);
+            const ratingText = await ratingElement.getText();
+            const value = parseFloat(ratingText);
+
+            expect(value).to.be.within(min, max);
+        }
+    }
+
+    async validateVotesAreWithinRange(min, max) {
+        const movies = await this.moviesList;
+
+        for (let i = 0; i < movies.length; i++) {
+            const votesElement = await this.getNumberOfVotes(i);
+            const votesText = await votesElement.getText();
+            const count = parseVoteCount(votesText);
+
+            expect(count).to.be.within(min, max);
+        }
     }
 }
 
