@@ -1,0 +1,24 @@
+stages:
+  - test_ui
+  - test_api
+
+default:
+  image: node:latest
+  before_script:
+    - npm install
+
+ui_tests:
+  stage: test_ui
+  script:
+    - echo "Running UI tests..."
+    - npm run test:ui
+  only:
+    - schedules
+
+api_tests:
+  stage: test_api
+  script:
+    - echo "Running API tests..."
+    - npm run test:api
+  only:
+    - schedules

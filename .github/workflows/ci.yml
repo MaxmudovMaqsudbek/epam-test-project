@@ -1,0 +1,37 @@
+name: WDIO CI
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
+
+jobs:
+  ui_tests:
+    name: Run UI Tests
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm ci
+      - run: npm run test:ui
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ui-test-reports
+          path: reports/
+
+  api_tests:
+    name: Run API Tests
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 'latest'
+      - run: npm ci
+      - run: npm run test:api
+      - uses: actions/upload-artifact@v3
+        with:
+          name: api-test-reports
+          path: reports/
