@@ -1,4 +1,4 @@
-name: WDIO CI
+name: Test Pipeline
 
 on:
   schedule:
@@ -10,8 +10,8 @@ jobs:
     name: Run UI Tests
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '18'
       - run: npm ci
@@ -25,10 +25,10 @@ jobs:
     name: Run API Tests
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '22'
       - run: npm ci
       - run: npm run test:api
       - uses: actions/upload-artifact@v4
