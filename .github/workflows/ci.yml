@@ -7,7 +7,7 @@ on:
 
 jobs:
   ui_tests:
-    name: Run UI Tests
+    name: Run UI Test
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,7 +22,7 @@ jobs:
           path: reports/
 
   api_tests:
-    name: Run API Tests
+    name: Run API Test
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
