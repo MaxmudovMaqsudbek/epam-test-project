@@ -12,7 +12,7 @@
   "scripts": {
     "test": "wdio run ./wdio.conf.js",
     "test:ui": "wdio run ./wdio.conf.js",
-    "test:api": "mocha test/api --reporter spec"
+    "test:api": "mocha test/api/api.test.js --reporter spec"
   },
   "dependencies": {
     "axios": "^1.13.2",
