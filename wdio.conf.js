@@ -21,7 +21,8 @@ export const config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        './test/specs/**/*.js'
+        './test/specs/**/*.js',
+        './test/api/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -70,9 +71,12 @@ export const config = {
                     '--force-color-profile=srgb',
                     '--disable-blink-features=AutomationControlled',
                     '--start-maximized',
-                    '--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0 Safari/537.36 Edg/115.0.1901.188'
+                    '--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0 Safari/537.36 Edg/115.0.1901.188',
+                    '--blink-settings=imagesEnabled=false',
+                    '--host-resolver-rules="MAP *.doubleclick.net 0.0.0.0, MAP *.amazon-adsystem.com 0.0.0.0, MAP *.googleadservices.com 0.0.0.0, MAP *.rubiconproject.com 0.0.0.0, MAP *.pubmatic.com 0.0.0.0, MAP *.openx.net 0.0.0.0, MAP *.gumgum.com 0.0.0.0"'
                 ]
-            }
+            },
+            pageLoadStrategy: 'eager'
         },
    /* {
         browserName: 'firefox'
@@ -123,7 +127,7 @@ export const config = {
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
-    connectionRetryTimeout: 120000,
+    connectionRetryTimeout: 100000,
     //
     // Default request retries count
     connectionRetryCount: 3,
