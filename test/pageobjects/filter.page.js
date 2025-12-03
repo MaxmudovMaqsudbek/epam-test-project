@@ -61,7 +61,15 @@ class FilterPage extends BasePage {
 
     async closeFilterMenu() {
         await this.click(this.closeButton);
-        await browser.pause(500);
+        await browser.pause(1000);
+        // Wait for movies list to update
+        await browser.waitUntil(
+            async () => {
+                const movies = await this.moviesList;
+                return movies.length > 0;
+            },
+            { timeout: 10000, timeoutMsg: 'Movies list did not load after filter' }
+        );
     }
 
     async sortByImdbRating() {
