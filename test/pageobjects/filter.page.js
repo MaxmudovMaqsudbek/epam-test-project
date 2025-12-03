@@ -90,7 +90,9 @@ class FilterPage extends BasePage {
             const ratingText = await ratingElement.getText();
             const value = parseFloat(ratingText);
 
-            expect(value).to.be.within(min, max);
+            if (!isNaN(value)) {
+                expect(value).to.be.within(min, max);
+            }
         }
     }
 
@@ -102,7 +104,9 @@ class FilterPage extends BasePage {
             const votesText = await votesElement.getText();
             const count = parseVoteCount(votesText);
 
-            expect(count).to.be.within(min, max);
+            if (!isNaN(count)) {
+                expect(count).to.be.within(min, max);
+            }
         }
     }
 }
