@@ -1,4 +1,4 @@
-{
+ {
   "name": "newtestingproject",
   "type": "module",
   "devDependencies": {
@@ -9,11 +9,11 @@
     "@wdio/local-runner": "^9.20.0",
     "@wdio/mocha-framework": "^9.20.0",
     "@wdio/spec-reporter": "^9.20.0",
-    "chromedriver": "^142.0.3"
+    "mocha": "^10.2.0"
   },
   "scripts": {
     "test": "wdio run ./wdio.conf.js",
-    "test:ui": "wdio run ./wdio.conf.js",
+    "test:ui": "npm test",
     "test:api": "mocha test/api/api.test.js --reporter spec"
   },
   "dependencies": {
