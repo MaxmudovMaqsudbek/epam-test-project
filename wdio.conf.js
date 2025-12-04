@@ -1,3 +1,5 @@
+
+
 export const config = {
     //
     // ====================
@@ -160,8 +162,11 @@ export const config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: ['spec',
-        ['junit', {outputDir:'reports/junit'}],
-        ['allure', {outputDir: 'reports/allure-results'}]
+        ['allure', {
+             outputDir: 'reports/allure-results', 
+             disableWebdriverStepsReporting: true,
+             disableWebdriverScreenshotsReporting: false,
+        }]
     ],
 
     // Options to be passed to Mocha.
