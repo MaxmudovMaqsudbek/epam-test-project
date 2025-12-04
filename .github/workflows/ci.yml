@@ -65,12 +65,14 @@ jobs:
           merge-multiple: true
 
       - name: Get Allure History
-        uses: actions/checkout@v4
-        if: always()
+        run: |
+          git fetch origin gh-pages --depth=1 || true
+          if git branch -r | grep -q 'origin/gh-pages'; then
+            git checkout gh-pages -- . || true
+            mkdir -p allure-history
+            cp -r . allure-history/ 2>/dev/null || true
+          fi
         continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
 
       - name: Generate Allure Report
         uses: simple-elf/allure-report-action@master
@@ -87,7 +89,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
-          force_orphan: true
 
   api_tests:
     name: API Tests
