@@ -11,6 +11,15 @@ class SearchPage extends BasePage{
     async searchFor(query){
         await this.type(this.searchInput, query);
         await this.click(this.searchButton);
+        // Wait for search results or empty message to appear
+        await browser.waitUntil(
+            async () => {
+                const results = await this.resultsList;
+                const emptyMsg = await this.emptyResultsMessage;
+                return results.length > 0 || await emptyMsg.isExisting();
+            },
+            { timeout: 15000, timeoutMsg: 'Search results did not load' }
+        );
     }
 }
 
