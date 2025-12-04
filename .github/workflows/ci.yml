@@ -9,6 +9,10 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: write
+  pages: write
+
 jobs:
   ui_tests:
     name: UI Tests (${{ matrix.spec }})
