@@ -1,5 +1,3 @@
-
-
 export const config = {
     //
     // ====================
@@ -22,10 +20,7 @@ export const config = {
     // The path of the spec files will be resolved relative from the directory of
     // of the config file unless it's absolute.
     //
-    specs: [
-        './test/specs/**/*.js',
-        './test/api/**/*.js'
-    ],
+    specs: ['./test/specs/**/*.js', './test/api/**/*.js'],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -53,7 +48,7 @@ export const config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [
-     {
+        {
             browserName: 'chrome',
             maxInstances: 2,
             'goog:chromeOptions': {
@@ -75,12 +70,12 @@ export const config = {
                     '--start-maximized',
                     '--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0 Safari/537.36 Edg/115.0.1901.188',
                     '--blink-settings=imagesEnabled=false',
-                    '--host-resolver-rules="MAP *.doubleclick.net 0.0.0.0, MAP *.amazon-adsystem.com 0.0.0.0, MAP *.googleadservices.com 0.0.0.0, MAP *.rubiconproject.com 0.0.0.0, MAP *.pubmatic.com 0.0.0.0, MAP *.openx.net 0.0.0.0, MAP *.gumgum.com 0.0.0.0"'
-                ]
+                    '--host-resolver-rules="MAP *.doubleclick.net 0.0.0.0, MAP *.amazon-adsystem.com 0.0.0.0, MAP *.googleadservices.com 0.0.0.0, MAP *.rubiconproject.com 0.0.0.0, MAP *.pubmatic.com 0.0.0.0, MAP *.openx.net 0.0.0.0, MAP *.gumgum.com 0.0.0.0"',
+                ],
             },
-            pageLoadStrategy: 'eager'
+            pageLoadStrategy: 'eager',
         },
-   /* {
+        /* {
         browserName: 'firefox'
     }, 
     {
@@ -89,7 +84,7 @@ export const config = {
     {
         browserName: 'MicrosoftEdge'
     }*/
-],
+    ],
 
     //
     // ===================
@@ -147,7 +142,7 @@ export const config = {
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.
     framework: 'mocha',
-    
+
     //
     // The number of times to retry the entire specfile when it fails as a whole
     specFileRetries: 2,
@@ -161,19 +156,23 @@ export const config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec',
-        ['allure', {
-             outputDir: 'reports/allure-results', 
-             disableWebdriverStepsReporting: true,
-             disableWebdriverScreenshotsReporting: false,
-        }]
+    reporters: [
+        'spec',
+        [
+            'allure',
+            {
+                outputDir: 'reports/allure-results',
+                disableWebdriverStepsReporting: true,
+                disableWebdriverScreenshotsReporting: false,
+            },
+        ],
     ],
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+        timeout: 60000,
     },
 
     //
@@ -270,12 +269,11 @@ export const config = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+    afterTest: async function (test, context, { passed }) {
         if (!passed) {
             await browser.takeScreenshot();
         }
     },
-
 
     /**
      * Hook that gets executed after the suite has ended
@@ -320,22 +318,22 @@ export const config = {
     // onComplete: function(exitCode, config, capabilities, results) {
     // },
     /**
-    * Gets executed when a refresh happens.
-    * @param {string} oldSessionId session ID of the old session
-    * @param {string} newSessionId session ID of the new session
-    */
+     * Gets executed when a refresh happens.
+     * @param {string} oldSessionId session ID of the old session
+     * @param {string} newSessionId session ID of the new session
+     */
     // onReload: function(oldSessionId, newSessionId) {
     // }
     /**
-    * Hook that gets executed before a WebdriverIO assertion happens.
-    * @param {object} params information about the assertion to be executed
-    */
+     * Hook that gets executed before a WebdriverIO assertion happens.
+     * @param {object} params information about the assertion to be executed
+     */
     // beforeAssertion: function(params) {
     // }
     /**
-    * Hook that gets executed after a WebdriverIO assertion happened.
-    * @param {object} params information about the assertion that was executed, including its results
-    */
+     * Hook that gets executed after a WebdriverIO assertion happened.
+     * @param {object} params information about the assertion that was executed, including its results
+     */
     // afterAssertion: function(params) {
     // }
-}
+};
