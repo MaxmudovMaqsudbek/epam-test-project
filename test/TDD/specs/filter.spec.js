@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import filterPage from '../pageobjects/filter.page';
-import filterData from '../data/filter.data';
+import filterPage from '../../pageobjects/filter.page';
+import filterData from '../../data/filter.data';
 
 describe('Filter Functionality Spec', () => {
     beforeEach(async () => {

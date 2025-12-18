@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import searchPage from '../pageobjects/search.page';
-import searchData from '../data/search.data';
+import searchPage from '../../pageobjects/search.page';
+import searchData from '../../data/search.data';
 
 describe('Search Functionality Spec', () => {
     beforeEach('it should open the page', async () => {

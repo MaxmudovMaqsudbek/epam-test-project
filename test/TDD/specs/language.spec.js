@@ -1,6 +1,5 @@
 import { expect } from 'chai';
-import languagePage from '../pageobjects/language.page.js';
-
+import languagePage from '../../pageobjects/language.page';
 describe('Language Functionality Spec', () => {
     beforeEach(async () => {
         await languagePage.open('https://www.imdb.com/');
