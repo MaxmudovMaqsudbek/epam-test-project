@@ -25,6 +25,12 @@
         "format": "prettier --write .",
         "test:ui": "npm test",
         "test:api": "mocha test/api/api.test.js --reporter spec",
+        "test:bdd": "wdio run ./wdio.conf.js --spec \"./test/BDD/feature/*.feature\"",
+        "test:bdd:filter": "wdio run ./wdio.conf.js --spec \"./test/BDD/feature/*.feature\" --cucumberOpts.tagExpression=\"@filter\"",
+        "test:bdd:search": "wdio run ./wdio.conf.js --spec \"./test/BDD/feature/*.feature\" --cucumberOpts.tagExpression=\"@search\"",
+        "test:bdd:language": "wdio run ./wdio.conf.js --spec \"./test/BDD/feature/*.feature\" --cucumberOpts.tagExpression=\"@language\"",
+        "test:bdd:positive": "wdio run ./wdio.conf.js --spec \"./test/BDD/feature/*.feature\" --cucumberOpts.tagExpression=\"@positive\"",
+        "test:bdd:negative": "wdio run ./wdio.conf.js --spec \"./test/BDD/feature/*.feature\" --cucumberOpts.tagExpression=\"@negative\"",
         "allure:generate": "npx allure generate reports/allure-results --clean -o allure-report",
         "allure:open": "npx allure open allure-report",
         "allure:report": "npm run allure:generate && npm run allure:open"
