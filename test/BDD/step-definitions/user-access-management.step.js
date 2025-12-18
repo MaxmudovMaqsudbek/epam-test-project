@@ -12,11 +12,13 @@ When('I click the "Sign In" button', async () => {
 });
 
 Then('I should be redirected to the Sign In page', async () => {
-    await expect(userAccessManagementPage.createAccountButton).to.be.displayed();
+    const isDisplayed = await userAccessManagementPage.createAccountButton.isDisplayed();
+    expect(isDisplayed).to.equal(true);
 });
 
 Then('I should see two options: "Sign In" and "Create a New Account"', async () => {
-    await expect(userAccessManagementPage.createAccountButton).to.be.displayed();
+    const isDisplayed = await userAccessManagementPage.createAccountButton.isDisplayed();
+    expect(isDisplayed).to.equal(true);
 });
 
 //Scenarios
