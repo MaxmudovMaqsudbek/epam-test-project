@@ -1,3 +1,4 @@
+@language @ui
 Feature: IMDb Language Selection
 
   Background:
