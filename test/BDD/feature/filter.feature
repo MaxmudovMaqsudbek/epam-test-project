@@ -1,3 +1,4 @@
+@filter @ui
 Feature: IMDb Filter and Sort
 
   Background:
