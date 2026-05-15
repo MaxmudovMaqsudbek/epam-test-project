@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import userAccessManagementPage from '../pageobjects/user-access-management.page';
-import userAccessManagementData from '../data/user-access-management.data';
+import userAccessManagementPage from '../../pageobjects/user-access-management.page';
+import userAccessManagementData from '../../data/user-access-management.data';
 
 describe('User Access Management Spec', () => {
     beforeEach('it should open the page', async () => {

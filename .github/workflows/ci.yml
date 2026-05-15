@@ -73,9 +73,46 @@ jobs:
                   path: reports/allure-results/
                   retention-days: 5
 
+    bdd_tests:
+        name: BDD Cucumber Tests (${{ matrix.feature }})
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                feature:
+                    - filter.feature
+                    - language.feature
+                    - search.feature
+                    - user-access-management.feature
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '22'
+                  cache: 'npm'
+
+            - name: Install Dependencies
+              run: npm ci
+
+            - name: Run BDD Tests
+              run: npm run test:bdd -- --spec "test/BDD/feature/${{ matrix.feature }}"
+              continue-on-error: true
+
+            - name: Upload Allure Results
+              uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                  name: allure-results-bdd-${{ matrix.feature }}
+                  path: reports/allure-results/
+                  retention-days: 5
+
     generate_report:
         name: Generate Allure Report
-        needs: ui_tests
+        needs: [ui_tests, bdd_tests]
         runs-on: ubuntu-latest
         if: always()
 
